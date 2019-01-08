@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1 v-text="new Date()"></h1>
+        <h1>
+            {{ reversedMessage }}
+        </h1>
+        <h1>
+            All Tasks
+        </h1>
+        <ul>
+            <li v-for="task in tasks" v-text="task.description"></li>
+        </ul>
+        <h2>
+            Incomplete Tasks
+        </h2>
+        <ul>
+            <li v-for="task in onlyIncompleteTasks" v-text="task.description"></li>
+        </ul>
+        <hr>
+        <h2>
+            Dynamic Tasklist
+        </h2>
+        <button @click="allTasks()">All Tasks</button>
+        <button @click="incompleteTasks()">Not Completed Tasks</button>
+        <button @click="completedTasks()">Completed Tasks</button>
+        <ul>
+            <li v-for="task in getTasks" v-text="task.description"></li>
+        </ul>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#root',
+            data: {
+                message: 'Hello World',
+                tasks: [
+                    { description: 'Go to the Store', completed: true },
+                    { description: 'Buy some keyboards', completed: false },
+                    { description: 'Check the new windows server 2019', completed: false },
+                    { description: 'Clear inbox', completed: false },
+                    { description: 'Make dinner', completed: false },
+                    { description: 'Clean my room', completed: true }
+                ],
+                temp: ''
+            },
+            methods: {
+                allTasks() {
+                    this.temp = this.tasks;
+                },
+                incompleteTasks() {
+                    this.temp = this.tasks.filter(task => ! task.completed);
+                },
+                completedTasks() {
+                    this.temp = this.tasks.filter(task => task.completed);
+                }
+            },
+             computed: {
+                reversedMessage() {
+                    return this.message.split('').reverse().join('');
+                },
+                onlyIncompleteTasks() {
+                    return this.tasks.filter(task => ! task.completed);
+                },
+                getTasks() {
+                    return this.temp ? this.temp : this.tasks;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
