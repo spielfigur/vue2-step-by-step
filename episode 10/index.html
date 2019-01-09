@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
+    <style type="text/css">body { padding-top: 40px; }</style>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root" class="container">
+        <modal v-if="showModal" @close="showModal = false">
+            Labore velit velit amet proident nostrud dolor est consequat laboris sint culpa sunt do. Id cupidatat deserunt ad Lorem dolor qui sit irure anim laboris ad duis ut. Cupidatat eu deserunt do consectetur nisi qui nostrud eiusmod voluptate. Amet ea magna ipsum dolor occaecat non sint cupidatat tempor consectetur. Adipisicing ipsum et commodo aliquip deserunt ullamco est nisi fugiat tempor nostrud. Ad consequat eiusmod laboris laborum anim exercitation do laborum commodo excepteur dolore fugiat minim. Reprehenderit et velit nulla ullamco fugiat.
+        </modal>
+        <button @click="showModal = true">Show Modal</button>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
